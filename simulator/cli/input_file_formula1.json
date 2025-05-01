@@ -1,0 +1,2638 @@
+[
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 706,
+                "output_length": 73
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13896,
+                "output_length": 865
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 10030,
+                "output_length": 641
+            },
+            {
+                "step": "revise",
+                "input_length": 7890,
+                "output_length": 103
+            },
+            {
+                "step": "revise",
+                "input_length": 7894,
+                "output_length": 106
+            },
+            {
+                "step": "revise",
+                "input_length": 7890,
+                "output_length": 135
+            },
+            {
+                "step": "revise",
+                "input_length": 7893,
+                "output_length": 106
+            },
+            {
+                "step": "revise",
+                "input_length": 7922,
+                "output_length": 135
+            },
+            {
+                "step": "revise",
+                "input_length": 7893,
+                "output_length": 113
+            },
+            {
+                "step": "revise",
+                "input_length": 7900,
+                "output_length": 115
+            },
+            {
+                "step": "revise",
+                "input_length": 7902,
+                "output_length": 115
+            },
+            {
+                "step": "revise",
+                "input_length": 7902,
+                "output_length": 116
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1082,
+                "output_length": 116
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1902,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1905,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1897,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1901,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1901,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1909,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 24
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 712,
+                "output_length": 93
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13828,
+                "output_length": 1009
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9962,
+                "output_length": 541
+            },
+            {
+                "step": "revise",
+                "input_length": 8732,
+                "output_length": 106
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1298,
+                "output_length": 91
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1101,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1092,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1092,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1097,
+                "output_length": 94
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 29
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 643,
+                "output_length": 23
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13939,
+                "output_length": 360
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 10073,
+                "output_length": 286
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 694,
+                "output_length": 47
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 550,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 553,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 562,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 32
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 652,
+                "output_length": 28
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13765,
+                "output_length": 463
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9899,
+                "output_length": 371
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 855,
+                "output_length": 81
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 735,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 736,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 744,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 744,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 641,
+                "output_length": 21
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13842,
+                "output_length": 1018
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9976,
+                "output_length": 416
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1362,
+                "output_length": 77
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1216,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1224,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1221,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1218,
+                "output_length": 115
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1232,
+                "output_length": 75
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13703,
+                "output_length": 595
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9837,
+                "output_length": 274
+            },
+            {
+                "step": "revise",
+                "input_length": 7620,
+                "output_length": 68
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1279,
+                "output_length": 80
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1144,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1132,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1139,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1144,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 711,
+                "output_length": 71
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13876,
+                "output_length": 1006
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 10010,
+                "output_length": 530
+            },
+            {
+                "step": "revise",
+                "input_length": 8777,
+                "output_length": 312
+            },
+            {
+                "step": "revise",
+                "input_length": 7868,
+                "output_length": 107
+            },
+            {
+                "step": "revise",
+                "input_length": 8088,
+                "output_length": 312
+            },
+            {
+                "step": "revise",
+                "input_length": 7874,
+                "output_length": 145
+            },
+            {
+                "step": "revise",
+                "input_length": 7912,
+                "output_length": 131
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1467,
+                "output_length": 122
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1262,
+                "output_length": 123
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1262,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1260,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1264,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1254,
+                "output_length": 96
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1267,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 660,
+                "output_length": 38
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13746,
+                "output_length": 546
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9880,
+                "output_length": 356
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 992,
+                "output_length": 85
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 982,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 990,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 976,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 987,
+                "output_length": 71
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13724,
+                "output_length": 594
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9858,
+                "output_length": 405
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 813,
+                "output_length": 122
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 649,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 655,
+                "output_length": 116
+            },
+            {
+                "step": "evaluate",
+                "input_length": 652,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 648,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 653,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 658,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 750,
+                "output_length": 72
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13958,
+                "output_length": 1010
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 10092,
+                "output_length": 675
+            },
+            {
+                "step": "revise",
+                "input_length": 8862,
+                "output_length": 13
+            },
+            {
+                "step": "revise",
+                "input_length": 8862,
+                "output_length": 137
+            },
+            {
+                "step": "revise",
+                "input_length": 7992,
+                "output_length": 138
+            },
+            {
+                "step": "revise",
+                "input_length": 7992,
+                "output_length": 137
+            },
+            {
+                "step": "revise",
+                "input_length": 7992,
+                "output_length": 13
+            },
+            {
+                "step": "revise",
+                "input_length": 7992,
+                "output_length": 137
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1430,
+                "output_length": 78
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1183,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1180,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1179,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1174,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1191,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 651,
+                "output_length": 27
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13764,
+                "output_length": 481
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9898,
+                "output_length": 460
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 961,
+                "output_length": 95
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 815,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 808,
+                "output_length": 76
+            },
+            {
+                "step": "evaluate",
+                "input_length": 808,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 807,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 807,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 821,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 38
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 682,
+                "output_length": 69
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13968,
+                "output_length": 872
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 10102,
+                "output_length": 620
+            },
+            {
+                "step": "revise",
+                "input_length": 8021,
+                "output_length": 12
+            },
+            {
+                "step": "revise",
+                "input_length": 8021,
+                "output_length": 13
+            },
+            {
+                "step": "revise",
+                "input_length": 8021,
+                "output_length": 170
+            },
+            {
+                "step": "revise",
+                "input_length": 8029,
+                "output_length": 170
+            },
+            {
+                "step": "revise",
+                "input_length": 8029,
+                "output_length": 170
+            },
+            {
+                "step": "revise",
+                "input_length": 8029,
+                "output_length": 171
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1330,
+                "output_length": 245
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1151,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1153,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1150,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1154,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1149,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1152,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1160,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1147,
+                "output_length": 169
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1148,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1150,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1157,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 679,
+                "output_length": 43
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13837,
+                "output_length": 554
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9971,
+                "output_length": 430
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 853,
+                "output_length": 65
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 701,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 698,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 699,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 710,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 642,
+                "output_length": 20
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13739,
+                "output_length": 658
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9873,
+                "output_length": 449
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 886,
+                "output_length": 85
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 776,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 776,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 775,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 780,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 26
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 690,
+                "output_length": 53
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 14000,
+                "output_length": 1009
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 10134,
+                "output_length": 617
+            },
+            {
+                "step": "revise",
+                "input_length": 8009,
+                "output_length": 187
+            },
+            {
+                "step": "revise",
+                "input_length": 8904,
+                "output_length": 111
+            },
+            {
+                "step": "revise",
+                "input_length": 8078,
+                "output_length": 173
+            },
+            {
+                "step": "revise",
+                "input_length": 8002,
+                "output_length": 165
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1439,
+                "output_length": 31
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1268,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1268,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1268,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1290,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 43
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 724,
+                "output_length": 119
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13980,
+                "output_length": 1007
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 10114,
+                "output_length": 677
+            },
+            {
+                "step": "revise",
+                "input_length": 8882,
+                "output_length": 159
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1553,
+                "output_length": 119
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1336,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1329,
+                "output_length": 132
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1328,
+                "output_length": 177
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1333,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1333,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1339,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 46
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 645,
+                "output_length": 29
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13711,
+                "output_length": 431
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9845,
+                "output_length": 365
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 628,
+                "output_length": 60
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 502,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 504,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 513,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 519,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 644,
+                "output_length": 21
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13776,
+                "output_length": 591
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9910,
+                "output_length": 365
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 847,
+                "output_length": 91
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 730,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 729,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 736,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 729,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 740,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 25
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 692,
+                "output_length": 58
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13879,
+                "output_length": 1026
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 10013,
+                "output_length": 620
+            },
+            {
+                "step": "revise",
+                "input_length": 7847,
+                "output_length": 18
+            },
+            {
+                "step": "revise",
+                "input_length": 7847,
+                "output_length": 85
+            },
+            {
+                "step": "revise",
+                "input_length": 7855,
+                "output_length": 98
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1185,
+                "output_length": 72
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 993,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1000,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 994,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1004,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 32
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 660,
+                "output_length": 28
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13800,
+                "output_length": 541
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9934,
+                "output_length": 387
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1134,
+                "output_length": 73
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1378,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1373,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1382,
+                "output_length": 126
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1386,
+                "output_length": 93
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 654,
+                "output_length": 32
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13881,
+                "output_length": 534
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 10015,
+                "output_length": 408
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 899,
+                "output_length": 80
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 749,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 746,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 753,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 755,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 28
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 675,
+                "output_length": 36
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13748,
+                "output_length": 960
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9882,
+                "output_length": 556
+            },
+            {
+                "step": "revise",
+                "input_length": 7735,
+                "output_length": 132
+            },
+            {
+                "step": "revise",
+                "input_length": 7771,
+                "output_length": 134
+            },
+            {
+                "step": "revise",
+                "input_length": 7773,
+                "output_length": 19
+            },
+            {
+                "step": "revise",
+                "input_length": 7773,
+                "output_length": 170
+            },
+            {
+                "step": "revise",
+                "input_length": 7809,
+                "output_length": 10
+            },
+            {
+                "step": "revise",
+                "input_length": 7809,
+                "output_length": 150
+            },
+            {
+                "step": "revise",
+                "input_length": 7796,
+                "output_length": 34
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1416,
+                "output_length": 100
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1409,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1405,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1417,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1407,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1416,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 692,
+                "output_length": 55
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 14131,
+                "output_length": 801
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 10265,
+                "output_length": 559
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1073,
+                "output_length": 176
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 920,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 917,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 924,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 923,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 916,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 911,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 920,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 924,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13723,
+                "output_length": 655
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9857,
+                "output_length": 460
+            },
+            {
+                "step": "revise",
+                "input_length": 7689,
+                "output_length": 68
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1044,
+                "output_length": 128
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 970,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 965,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 981,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 970,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 971,
+                "output_length": 89
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 669,
+                "output_length": 35
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13845,
+                "output_length": 624
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9979,
+                "output_length": 507
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1248,
+                "output_length": 100
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1074,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1080,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1081,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1076,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1079,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1089,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 46
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 673,
+                "output_length": 44
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13834,
+                "output_length": 882
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9968,
+                "output_length": 582
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1240,
+                "output_length": 113
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1068,
+                "output_length": 154
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1075,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1070,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1065,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1070,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 1078,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 649,
+                "output_length": 26
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13855,
+                "output_length": 368
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9989,
+                "output_length": 331
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 629,
+                "output_length": 54
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 508,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 516,
+                "output_length": 96
+            },
+            {
+                "step": "evaluate",
+                "input_length": 519,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 33
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 662,
+                "output_length": 35
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13805,
+                "output_length": 764
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 9939,
+                "output_length": 431
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 997,
+                "output_length": 52
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 869,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 867,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 876,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    },
+    {
+        "Text2SQLRequest": [
+            {
+                "step": "Information Retriever",
+                "input_length": 301,
+                "output_length": 5
+            },
+            {
+                "step": "extract_keywords",
+                "input_length": 661,
+                "output_length": 39
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 304,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 308,
+                "output_length": 5
+            },
+            {
+                "step": "Information Retriever",
+                "input_length": 312,
+                "output_length": 4
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 13964,
+                "output_length": 849
+            },
+            {
+                "step": "generate_candidate_llama-agent",
+                "input_length": 10098,
+                "output_length": 486
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 271,
+                "output_length": 6
+            },
+            {
+                "step": "generate_unit_test",
+                "input_length": 1109,
+                "output_length": 103
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 275,
+                "output_length": 4
+            },
+            {
+                "step": "evaluate",
+                "input_length": 977,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 976,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 979,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 981,
+                "output_length": 22
+            },
+            {
+                "step": "evaluate",
+                "input_length": 984,
+                "output_length": 22
+            },
+            {
+                "step": "unit_tester",
+                "input_length": 278,
+                "output_length": 4
+            }
+        ]
+    }
+]

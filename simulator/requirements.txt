@@ -1,0 +1,9 @@
+transformers
+langdetect
+datasets
+wandb
+immutabledict
+matplotlib
+seaborn
+lm_eval @git+https://github.com/EleutherAI/lm-evaluation-harness.git@v0.4.3
+rich
