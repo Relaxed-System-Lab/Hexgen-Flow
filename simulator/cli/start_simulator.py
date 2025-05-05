@@ -21,18 +21,17 @@ def run_simulation(args):
     # print(args)
     # server = LLMGlobalEngine(args.input, float(args.arrival_rate))
     server = ABGlobalEngine()
+    gpu_lst1 = ["nvidia_A100", "nvidia_A100", "nvidia_A6000", "nvidia_L40S"]
+    gpu_lst2 = ["nvidia_A100", "nvidia_A6000", "nvidia_A100", "nvidia_A6000"]
 
     for i in range(args.n_engines):
-        server.add_engine("meta-llama/Llama-3.1-70B-Instruct", "nvidia_A100", 4,4,4)
-        # server.add_engine("meta-llama/Llama-3.1-70B-Instruct", "nvidia_A100", 4,4,4)
-        server.add_engine("meta-llama/Llama-3.1-70B-Instruct", "nvidia_A6000", 4,4,4)
-        # server.add_engine("meta-llama/Llama-3.1-70B-Instruct", "nvidia_L40S", 4,4,4)
+        server.add_engine("meta-llama/Llama-3.1-70B-Instruct", gpu_lst1[i], 4,4,4)
     
     server.load_requests(args.input, float(args.arrival_rate), args.SLO)
     
     server.start()
-    # server.save_results("./result/baseline_output.json")
-    server.save_results("./result/rr+pq_output.json")
+    # server.save_results("./result/baseline_latency.json")
+    server.save_results("./result/rr+pq_latency.json")
 
     with open(args.trace_output, "w") as f:
         data = {"traceEvents": [asdict(x) for x in server.trace]}
@@ -42,13 +41,13 @@ def run_simulation(args):
         # "failed": server.failed_requests,
         "config": server.config,
     }
-    with open(args.stats_output, "w") as f:
-        f.write(json.dumps(stats, indent=4))
+    # with open(args.stats_output, "w") as f:
+    #     f.write(json.dumps(stats, indent=4))
 
     print(end="\n")
     print(f"--" * 10 + " Simulation Done " + "--" * 10)
 
-    console.print(make_table("Summary", server.summary))
+    # console.print(make_table("Summary", server.summary))
     # print(f"Pass rate: {server.SLO_pass_rate(float(args.SLO))}")
     slo_scales = [round(x, 2) for x in [3 + 0.2 * i for i in range(60)]]  # 0.3 to 2.0
     pass_rates = [server.SLO_pass_rate(args.SLO * scale) for scale in slo_scales]
@@ -57,24 +56,16 @@ def run_simulation(args):
 def run_simulation_optimized(args, w1=1, index=0):
     # print(args)
     server = OPGlobalEngine(alpha=args.alpha)
+    gpu_lst1 = ["nvidia_A100", "nvidia_A100", "nvidia_A6000", "nvidia_L40S"]
+    gpu_lst2 = ["nvidia_A100", "nvidia_A6000", "nvidia_A100", "nvidia_A6000"]
 
     for i in range(args.n_engines):
-        server.add_engine(w1, "meta-llama/Llama-3.1-70B-Instruct", "nvidia_A100", 4,4,4)
-        server.add_engine(w1, "meta-llama/Llama-3.1-70B-Instruct", "nvidia_A100", 4,4,4)
-        server.add_engine(w1, "meta-llama/Llama-3.1-70B-Instruct", "nvidia_A6000", 4,4,4)
-        server.add_engine(w1, "meta-llama/Llama-3.1-70B-Instruct", "nvidia_L40S", 4,4,4)
-        # for j in range(9):
-        #     server.add_engine(w1, "meta-llama/Llama-3.1-70B-Instruct", "nvidia_A40", 4,4,4)
-        # server.add_engine(w1, "meta-llama/Llama-3.1-70B-Instruct", "nvidia_A100", 4,4,4)
-        # server.add_engine(w1, "meta-llama/Llama-3.1-70B-Instruct", "nvidia_L40", 4,4,4)
-        # server.add_engine(w1, "meta-llama/Llama-3.1-70B-Instruct", "nvidia_L40", 4,4,4)
-        # server.add_engine(w1, "meta-llama/Llama-3.1-70B-Instruct", "nvidia_L40", 4,4,4)
-        # server.add_engine("meta-llama/Llama-2-7b-hf", "nvidia_A100", 4,4,4)
+        server.add_engine("meta-llama/Llama-3.1-70B-Instruct", gpu_lst1[i], 4,4,4)
 
     server.load_requests(args.input, float(args.arrival_rate), args.SLO)
 
     server.start()
-    server.save_results(f"./result/optimized_output{index}.json")
+    server.save_results(f"./result/latency{index}.json")
 
     with open(f"./result/optimized_trace_output{index}.json", "w") as f:
         data = {"traceEvents": [asdict(x) for x in server.trace]}
@@ -84,13 +75,13 @@ def run_simulation_optimized(args, w1=1, index=0):
         # "failed": server.failed_requests,
         "config": server.config,
     }
-    with open(f"./result/optimized_stats_output{index}.json", "w") as f:
-        f.write(json.dumps(stats, indent=4))
+    # with open(f"./result/optimized_stats_output{index}.json", "w") as f:
+    #     f.write(json.dumps(stats, indent=4))
 
     print(end="\n")
     print(f"--" * 10 + " Simulation Done " + "--" * 10)
 
-    console.print(make_table("Summary", server.summary))
+    # console.print(make_table("Summary", server.summary))
 
     slo_scales = [round(x, 2) for x in [3 + 0.2 * i for i in range(60)]]  # 0.3 to 2.0
     pass_rates = [server.SLO_pass_rate(args.SLO * scale) for scale in slo_scales]
@@ -98,8 +89,8 @@ def run_simulation_optimized(args, w1=1, index=0):
 
 if __name__ == "__main__":
     import argparse
-    # hardware_lst = ["nvidia_A100", "nvidia_A100", "nvidia_A6000", "nvidia_L40S"]
-    hardware_lst = ["nvidia_A100", "nvidia_A6000"]
+    hardware_lst = ["nvidia_A100", "nvidia_A100", "nvidia_A6000", "nvidia_L40S"]
+    # hardware_lst = ["nvidia_A100", "nvidia_A6000"]
     slo = sum([calculate_avg_empirical_time(hardware_lst, s) for s in STANDARD_WORKFLOW])
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", type=str, help="Input file")
@@ -122,9 +113,9 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     slo_scales = [round(x, 2) for x in [3 + 0.2 * i for i in range(60)]]  # 0.3 to 3.2
-    pass_rates_rrpq = run_simulation(args)
+    # pass_rates_rrpq = run_simulation(args)
     # pass_rates_wbfcfs = run_simulation_optimized(args, 0, 0)
-    # pass_rates_wbpq = run_simulation_optimized(args, 1, 1)
+    pass_rates_wbpq = run_simulation_optimized(args, 1, 1)
     # # Plotting the pass rates for both baseline and optimized
     # plt.figure(figsize=(10, 6))
     # plt.plot(slo_scales, pass_rates_rrpq, marker='o', label="RR+PQ SLO Pass Rate", color='blue')
