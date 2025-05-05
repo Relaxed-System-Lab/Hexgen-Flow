@@ -1,6 +1,6 @@
 # Hexgen-Flow
 
-This is a simulator designed to evaluate scheduling algorithms proposed by Hexgen-Flow when serving Text-to-SQL queries. These queries typically involve multiple LLM (Large Language Model) inference calls. The simulator allows users to experiment with different configurations, including input traces, arrival rates, and GPU deployment settings, to analyze the performance of the scheduling algorithm.
+The alpha-tuning simulator is implemented to evaluate scheduling algorithms proposed by Hexgen-Flow when serving Text-to-SQL queries. These queries typically involve multiple LLM (Large Language Model) inference calls. The simulator allows users to experiment with different configurations, including input traces, arrival rates, and GPU deployment settings, to analyze the performance of the scheduling algorithm.
 
 ## Features
 
