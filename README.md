@@ -82,3 +82,6 @@ Users can modify the `start_simulator.py` script to:
   - `profiler/`: Profiling tools.
   - `ui/`: User interface utilities for displaying results.
 
+## Acknowledgments
+
+This simulator builds upon the codebase from the [ETH EASL Scratchpad repository](https://github.com/eth-easl/Scratchpad/tree/dev/tools/simulator), which provided the foundation for its initial implementation.
