@@ -108,7 +108,10 @@ class LLMEngineQLM:
         for group in self.waiting.groups:
             min_time_left = float('inf')
             for request in group.requests:
-                slo = request.parent_request.slo / len(STANDARD_WORKFLOW)
+                if request.parent_request is None:
+                    slo = request.SLO
+                else:
+                    slo = request.parent_request.slo / len(STANDARD_WORKFLOW)
                 request.time_left = (slo - request.elapsed_time) // 10 * 10
                 min_time_left = min(min_time_left, request.time_left)
             group.time_left = min_time_left  # Update group's time_left to match its most urgent request
@@ -142,7 +145,10 @@ class LLMEngineQLM:
 
     def add_request(self, request: GenerationRequest):
         # Calculate request's time_left
-        slo = request.parent_request.slo / len(STANDARD_WORKFLOW)
+        if request.parent_request is None:
+            slo = request.SLO
+        else:
+            slo = request.parent_request.slo / len(STANDARD_WORKFLOW)
         request.time_left = (slo - request.elapsed_time) // 10 * 10
         
         # Find group with matching model and similar time_left

@@ -21,7 +21,7 @@ class ABGlobalEngine:
         self.timers = defaultdict(dict)
         self.pending_requests: Deque[GenerationRequest] = deque()
         self.global_timer = 0
-        self.supported_models: set = set()
+        self.supported_models: List[str] = []
         self._trace = []
         self.total_requests = 0
         self.policy = EvenGTLPolicy()
@@ -35,7 +35,8 @@ class ABGlobalEngine:
         )
         self.engines[model_name].append(engine)
         self.hardware_lst.append(hardware_name)
-        self.supported_models.add(model_name)
+        if model_name not in self.supported_models:
+            self.supported_models.append(model_name)
         self.policy.prepare(self.engines)
         self.timers[model_name][engine.engine_id] = 0
 
@@ -61,7 +62,8 @@ class ABGlobalEngine:
                 req_id=f"text2sql_{idx}",
                 gen_requests_config=request_data["Text2SQLRequest"],
                 slo=slo,
-                hardware_lst=self.hardware_lst
+                hardware_lst=self.hardware_lst,
+                arrive_at=workload[idx],
             )
             self.text2sql_requests[text2sql_req.req_id] = text2sql_req
             first_requests = text2sql_req.create_current_stage_requests(request_data["model"], workload[idx])

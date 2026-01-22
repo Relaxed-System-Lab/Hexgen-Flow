@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from tools.simulator.core.request import GenerationRequest
+from simulator.core.request import GenerationRequest
 
 
 class BaseGlobalToLocalPolicy(ABC):

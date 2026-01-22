@@ -29,7 +29,7 @@ B = 2
 EMPIRICAL_IO_LEN = {"Information Retriever": (308, 5),
                   "extract_keywords": (667, 45), 
                   "generate_candidate_llama-agent1": (11748, 678),
-                  "generate_candidate_llama-agent": (11748, 678),
+                  "generate_candidate_llama-agent": (7882, 389),
                   "revise": (5963, 79),
                   "unit_tester": (275, 4),
                   "generate_unit_test": (1109, 103),
@@ -91,6 +91,22 @@ LATENCY_DICT_LOOKUP = {
     "nvidia_L40S": build_latency_dict("nvidia_L40S")}
 
 
+def _parse_background_step(step_name: str):
+    if not isinstance(step_name, str):
+        return None
+    if not step_name.startswith("background:"):
+        return None
+    parts = step_name.split(":")
+    if len(parts) != 3:
+        return None
+    try:
+        input_len = int(parts[1])
+        output_len = int(parts[2])
+    except ValueError:
+        return None
+    return input_len, output_len
+
+
 def calculate_empirical_time(hardware_name: str, step_name) -> float:
     """Calculate the empirical time for a given hardware"""
     # hardware_param = hardware_params[hardware_name]
@@ -101,7 +117,13 @@ def calculate_empirical_time(hardware_name: str, step_name) -> float:
     # decode = (12 * output_length * HIDDEN_SIZE**2 * NUM_LAYERS * B) / m_t
     # empirical_time = prefill + decode
     latency_dict = LATENCY_DICT_LOOKUP[hardware_name]
-    empirical_time = latency_dict[EMPIRICAL_IO_LEN[step_name]]["latency"]
+    if step_name in EMPIRICAL_IO_LEN:
+        pair = EMPIRICAL_IO_LEN[step_name]
+    else:
+        pair = _parse_background_step(step_name)
+        if pair is None:
+            raise KeyError(f"Unknown step name: {step_name}")
+    empirical_time = latency_dict[pair]["latency"]
     # if hardware_name == "nvidia_A100":
     #     empirical_time = EMPIRICAL_TIME_A100[step_name]
     return empirical_time
@@ -221,8 +243,18 @@ class Text2SQLRequest:
     stage_lst: List[str] = None
     request_counter: int = 0
     tenant_id: int = 0  # 0 for tenant 1, 1 for tenant 2
+    arrive_at: float = 0.0
+    aborted: bool = False
     
-    def __init__(self, req_id: str, gen_requests_config: List[dict], slo=52.95, hardware_lst: List[str] = ["nvidia_A100"], tenant_id: int = 0):
+    def __init__(
+        self,
+        req_id: str,
+        gen_requests_config: List[dict],
+        slo=52.95,
+        hardware_lst: List[str] = ["nvidia_A100"],
+        tenant_id: int = 0,
+        arrive_at: float = 0.0,
+    ):
         self.slo = slo
         self.req_id = req_id
         self.current_stage = 0
@@ -232,6 +264,8 @@ class Text2SQLRequest:
         self.current_requests = []
         self.request_counter = 0
         self.tenant_id = tenant_id
+        self.arrive_at = arrive_at
+        self.aborted = False
         self._initialize_stages()
         self.total_stages = len(self.stage_lst)
         self.standard_workflow = STANDARD_WORKFLOW.copy()
@@ -262,15 +296,19 @@ class Text2SQLRequest:
             self.standard_workflow.remove(current_step)
         if current_step == "unit_tester" and "revise" in self.standard_workflow:
             self.standard_workflow = list(filter(lambda x: x != "revise", self.standard_workflow))
+        if (self.slo - self.total_time) > 0:
+            slo=(self.slo - self.total_time) * (calculate_avg_empirical_time(self.hardware_lst, current_step) / (calculate_avg_empirical_time(self.hardware_lst, current_step) + sum([calculate_avg_empirical_time(self.hardware_lst, s) for s in self.standard_workflow])))
+        else:
+            slo=(self.slo - self.total_time)
         if current_step == "generate_candidate_llama-agent" or current_step == "evaluate":
             for stage_config in self.gen_requests_config:
                 if stage_config["step"] == current_step:
-                    if current_step == "generate_candidate_llama-agent" and candidate_count < 4:
+                    if current_step == "generate_candidate_llama-agent" and candidate_count < 1:
                         next_request = GenerationRequest(
                             req_id=f"{self.req_id}_req_{self.request_counter}",
                             model=model,
                             step=current_step+'1',
-                            slo=(self.slo - self.total_time) * (calculate_avg_empirical_time(self.hardware_lst, current_step) / (calculate_avg_empirical_time(self.hardware_lst, current_step) + sum([calculate_avg_empirical_time(self.hardware_lst, s) for s in self.standard_workflow]))),
+                            slo=slo,
                             input_length=stage_config["input_length"],
                             output_length=stage_config["output_length"],
                             arrive_at=arrive_at,
@@ -282,7 +320,7 @@ class Text2SQLRequest:
                             req_id=f"{self.req_id}_req_{self.request_counter}",
                             model=model,
                             step=current_step,
-                            slo=(self.slo - self.total_time) * (calculate_avg_empirical_time(self.hardware_lst, current_step) / (calculate_avg_empirical_time(self.hardware_lst, current_step) + sum([calculate_avg_empirical_time(self.hardware_lst, s) for s in self.standard_workflow]))),
+                            slo=slo,
                             input_length=stage_config["input_length"],
                             output_length=stage_config["output_length"],
                             arrive_at=arrive_at,
@@ -295,7 +333,7 @@ class Text2SQLRequest:
                 req_id=f"{self.req_id}_req_{self.request_counter}",
                 model=model,
                 step=current_step,
-                slo=(self.slo - self.total_time) * (calculate_avg_empirical_time(self.hardware_lst, current_step) / (calculate_avg_empirical_time(self.hardware_lst, current_step) + sum([calculate_avg_empirical_time(self.hardware_lst, s) for s in self.standard_workflow]))),
+                slo=slo,
                 input_length=self.gen_requests_config[self.request_counter]["input_length"],
                 output_length=self.gen_requests_config[self.request_counter]["output_length"],
                 arrive_at=arrive_at,

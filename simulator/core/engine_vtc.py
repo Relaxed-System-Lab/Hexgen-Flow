@@ -54,20 +54,21 @@ class LLMEngineVTC:
 
     def add_request(self, req: GenerationRequest):
         self.waiting.append(req)
-        if req.parent_request.req_id not in self.user_req_list:
-            self.user_req_list[req.parent_request.req_id] = deque([req])
-            self.served[req.parent_request.req_id] = 0
-            self.fairw[req.parent_request.req_id] = 1
+        parent_id = req.parent_request.req_id if req.parent_request is not None else req.req_id
+        if parent_id not in self.user_req_list:
+            self.user_req_list[parent_id] = deque([req])
+            self.served[parent_id] = 0
+            self.fairw[parent_id] = 1
         else:
-            self.user_req_list[req.parent_request.req_id].append(req)
+            self.user_req_list[parent_id].append(req)
 
         # waiting queue was empty before
-        if len(self.user_req_list[req.parent_request.req_id]) == 1:
+        if len(self.user_req_list[parent_id]) == 1:
             # lift counter
             cnts = [v for k, v in self.served.items()
-                      if (len(self.user_req_list[k]) > 0 and k != req.parent_request.req_id)]
+                      if (len(self.user_req_list[k]) > 0 and k != parent_id)]
             if len(cnts) > 0:
-                self.served[req.parent_request.req_id] = max(self.served[req.parent_request.req_id], min(cnts))
+                self.served[parent_id] = max(self.served[parent_id], min(cnts))
 
     def update_elapsed_time(self, current_time: float, hardware_name: str):
         for request in self.waiting:

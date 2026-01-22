@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
     input_file = "./input_file_trace1.json"
     n_engines = 1
-    arrival_rates = [0.5]  # Iterate over both arrival rates
+    arrival_rates = [0.5, 1]  # Iterate over both arrival rates
     gpu_count = 3
 
     run_simulations(input_file, n_engines, arrival_rates, gpu_count)

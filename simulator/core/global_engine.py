@@ -1,13 +1,17 @@
 # This is the global engine that use pure round-robin scheduling and different engine types based on mode.
 from collections import deque, defaultdict
+import math
+import os
+import random
 from typing import List, Deque
 from simulator.core.engine import LLMEngine
+from simulator.core.engine_llf import LLMEngineLLF
 from simulator.core.engine_optimized import LLMEngineOptimized
 from simulator.core.engine_vtc import LLMEngineVTC
 from simulator.core.engine_qlm import LLMEngineQLM
 from simulator.core.request import Text2SQLRequest, GenerationRequest
 from dataclasses import dataclass
-from .policies import EvenGTLPolicy
+from .policies import EvenGTLPolicy, Po2CGTLPolicy
 import json
 import numpy as np
 from typing import Dict, List, Optional
@@ -26,17 +30,29 @@ class LLMGlobalEngine:
             self.engines = defaultdict(list[LLMEngineVTC])
         elif mode == "qlm":
             self.engines = defaultdict(list[LLMEngineQLM])
+        elif mode == "ray":
+            self.engines = defaultdict(list[LLMEngine])
+        elif mode == "llf":
+            self.engines = defaultdict(list[LLMEngineLLF])
+        elif mode == "ray-llf":
+            self.engines = defaultdict(list[LLMEngineLLF])
         else:
-            raise ValueError(f"Unsupported mode: {mode}. Supported modes: baseline, rr+pq, vtc, qlm")
+            raise ValueError(
+                f"Unsupported mode: {mode}. Supported modes: baseline, rr+pq, vtc, qlm, ray, llf, ray-llf"
+            )
         self.mode = mode
         self.timers = defaultdict(dict)
         self.pending_requests: Deque[GenerationRequest] = deque()
         self.global_timer = 0
-        self.supported_models: set = set()
+        self.supported_models: List[str] = []
         self._trace = []
         self.total_requests = 0
-        self.policy = EvenGTLPolicy()  # All modes use EvenGTLPolicy (round robin)
+        if mode in ("ray", "ray-llf"):
+            self.policy = Po2CGTLPolicy()
+        else:
+            self.policy = EvenGTLPolicy()  # Default: round robin
         self.text2sql_requests: Dict[str, Text2SQLRequest] = {}
+        self.background_requests: Dict[str, GenerationRequest] = {}
         self._is_trace4 = False
 
 
@@ -60,6 +76,18 @@ class LLMGlobalEngine:
             engine = LLMEngineQLM(
                 existing_engines + 1, model_name, hardware_name, w_bit, a_bit, kv_bit
             )
+        elif self.mode == "ray":
+            engine = LLMEngine(
+                existing_engines + 1, model_name, hardware_name, w_bit, a_bit, kv_bit
+            )
+        elif self.mode == "llf":
+            engine = LLMEngineLLF(
+                existing_engines + 1, model_name, hardware_name, w_bit, a_bit, kv_bit
+            )
+        elif self.mode == "ray-llf":
+            engine = LLMEngineLLF(
+                existing_engines + 1, model_name, hardware_name, w_bit, a_bit, kv_bit
+            )
         
         # If this is a trace4 workflow, override latency dict using new_obtain_latency
         if getattr(self, "_is_trace4", False):
@@ -71,13 +99,27 @@ class LLMGlobalEngine:
 
         self.engines[model_name].append(engine)
         self.hardware_lst.append(hardware_name)
-        self.supported_models.add(model_name)
+        if model_name not in self.supported_models:
+            self.supported_models.append(model_name)
         self.policy.prepare(self.engines)
         self.timers[model_name][engine.engine_id] = 0
 
-    def load_requests(self, input_file: str, arrival_rate: float, slo: float = None, multi_tenant: bool = False):
+    def load_requests(
+        self,
+        input_file: str,
+        arrival_rate: float,
+        slo: float = None,
+        multi_tenant: bool = False,
+        arrival_shift: bool = False,
+    ):
         with open(input_file, 'r') as f:
             data = json.load(f)
+        base_name = os.path.basename(input_file)
+        background_ratio = None
+        if base_name.startswith("input_file_trace5"):
+            background_ratio = 0.25
+        elif base_name.startswith("input_file_trace6"):
+            background_ratio = 0.5
         # Detect trace4 workflow: steps are subset of {Selector, Decomposer, Refiner}
         trace4_steps = {"Selector", "Decomposer", "Refiner"}
         def _is_trace4_data(dlist):
@@ -93,17 +135,90 @@ class LLMGlobalEngine:
                 return False
 
         self._is_trace4 = _is_trace4_data(data)
+        if self._is_trace4:
+            # Update latency dicts for already-created engines.
+            try:
+                from simulator.core.new_obtain_latency import build_latency_dict as _build_trace4
+                for model in self.supported_models:
+                    for engine in self.engines[model]:
+                        engine.latency_dict = _build_trace4(engine.hardware_name)
+            except Exception:
+                pass
+            # Ensure routing policies use trace4 empirical time where applicable.
+            if hasattr(self.policy, "set_empirical_time_fn"):
+                try:
+                    from simulator.core.request_trace4 import calculate_empirical_time as _trace4_calc
+                    self.policy.set_empirical_time_fn(_trace4_calc)
+                except Exception:
+                    pass
+
+        if background_ratio is not None:
+            background_count = int(math.ceil(len(data) * background_ratio / (1 - background_ratio)))
+            candidates = []
+            for item in data:
+                for cfg in item.get("Text2SQLRequest", []):
+                    if "input_length" in cfg and "output_length" in cfg:
+                        candidates.append((cfg["input_length"], cfg["output_length"]))
+            rng = random.Random(0)
+            background_requests = []
+            for i in range(background_count):
+                if candidates:
+                    input_len, output_len = rng.choice(candidates)
+                else:
+                    input_len, output_len = 1, 1
+                background_requests.append(
+                    {
+                        "req_id": f"background_{i}",
+                        "step": f"background:{input_len}:{output_len}",
+                        "input_length": input_len,
+                        "output_length": output_len,
+                    }
+                )
+            combined = []
+            for idx, request_data in enumerate(data):
+                combined.append(("text2sql", idx, request_data))
+            for i, bg_req in enumerate(background_requests):
+                combined.append(("background", i, bg_req))
+            rng.shuffle(combined)
+            total_count = len(combined)
+        else:
+            combined = [("text2sql", idx, request_data) for idx, request_data in enumerate(data)]
+            total_count = len(data)
 
         if arrival_rate is not None and arrival_rate > 0:
-            print(f"Synthesizing arrival time using Poisson process with ar {arrival_rate}")
-            pp = PoissonProcess(arrival_rate)
-            duration_needed = len(data) / arrival_rate
-            workload = pp.generate_workload(
-                0, duration_needed * 2
-            )  # multiply by 2 to be safe
+            if arrival_shift:
+                # Piecewise workload shift: 3s @ 5 qps, 4s @ 20 qps, 3s @ 5 qps
+                print("Synthesizing shifted arrival process: 3s@5qps, 4s@20qps, 3s@5qps")
+                segments = [
+                    (0.0, 3.0, 5.0),
+                    (3.0, 7.0, 20.0),
+                    (7.0, 10.0, 5.0),
+                ]
+                counts = [int(round((end - start) * rate)) for start, end, rate in segments]
+                diff = total_count - sum(counts)
+                if diff != 0:
+                    counts[-1] = max(counts[-1] + diff, 0)
+                workload = []
+                for (start, end, _rate), count in zip(segments, counts):
+                    if count <= 0:
+                        continue
+                    interval = (end - start) / count
+                    workload.extend([start + i * interval for i in range(count)])
+                # Trim or pad to match total_count exactly.
+                if len(workload) > total_count:
+                    workload = workload[:total_count]
+                elif len(workload) < total_count:
+                    workload.extend([segments[-1][1]] * (total_count - len(workload)))
+            else:
+                print(f"Synthesizing arrival time using Poisson process with ar {arrival_rate}")
+                pp = PoissonProcess(arrival_rate)
+                duration_needed = total_count / arrival_rate
+                workload = pp.generate_workload(
+                    0, duration_needed * 2
+                )  # multiply by 2 to be safe
         else:
             print("Arrival rate not provided, assuming all requests arrive at time 0")
-            workload = [0] * len(data)
+            workload = [0] * total_count
         
         # Calculate SLO if not provided
         if slo is None:
@@ -126,41 +241,66 @@ class LLMGlobalEngine:
         else:
             from simulator.core.request import Text2SQLRequest as _RequestCls
 
-        # for idx, request_data in enumerate([data[1]]):
-        for idx, request_data in enumerate(data):
-            request_data["model"] = "meta-llama/Llama-3.1-70B-Instruct"
-            
-            # Assign tenant based on request order (first half = tenant 1, second half = tenant 2)
-            if multi_tenant:
-                tenant_id = 0 if idx < len(data) // 2 else 1
-                tenant_slo = tenant1_slo if tenant_id == 0 else tenant2_slo
+        for i, item in enumerate(combined):
+            kind, idx, request_data = item
+            arrive_at = workload[i]
+            if kind == "text2sql":
+                request_data["model"] = "meta-llama/Llama-3.1-70B-Instruct"
+
+                # Assign tenant based on request order (first half = tenant 1, second half = tenant 2)
+                if multi_tenant:
+                    tenant_id = 0 if idx < len(data) // 2 else 1
+                    tenant_slo = tenant1_slo if tenant_id == 0 else tenant2_slo
+                else:
+                    tenant_id = 0
+                    tenant_slo = slo
+
+                text2sql_req = _RequestCls(
+                    req_id=f"text2sql_{idx}",
+                    gen_requests_config=request_data["Text2SQLRequest"],
+                    slo=tenant_slo,
+                    hardware_lst=self.hardware_lst,
+                    tenant_id=tenant_id,
+                    arrive_at=arrive_at,
+                )
+                self.text2sql_requests[text2sql_req.req_id] = text2sql_req
+                first_requests = text2sql_req.create_current_stage_requests(
+                    request_data["model"], arrive_at
+                )
+                for req in first_requests:
+                    if req is not None:
+                        self.pending_requests.append(req)
+                        self.total_requests += 1
             else:
-                tenant_id = 0
-                tenant_slo = slo
-            
-            text2sql_req = _RequestCls(
-                req_id=f"text2sql_{idx}",
-                gen_requests_config=request_data["Text2SQLRequest"],
-                slo=tenant_slo,
-                hardware_lst=self.hardware_lst,
-                tenant_id=tenant_id
-            )
-            self.text2sql_requests[text2sql_req.req_id] = text2sql_req
-            first_requests = text2sql_req.create_current_stage_requests(request_data["model"], workload[idx])
-            for req in first_requests:
-                if req is not None:
-                    self.pending_requests.append(req)
-                    self.total_requests += 1
+                bg_req = GenerationRequest(
+                    req_id=request_data["req_id"],
+                    model="meta-llama/Llama-3.1-70B-Instruct",
+                    step=request_data["step"],
+                    slo=slo,
+                    input_length=request_data["input_length"],
+                    output_length=request_data["output_length"],
+                    arrive_at=arrive_at,
+                    parent_request=None,
+                )
+                self.background_requests[bg_req.req_id] = bg_req
+                self.pending_requests.append(bg_req)
+                self.total_requests += 1
     
     def handle_request_completion(self, request: GenerationRequest, current_time: float):
         if request.parent_request:
             parent = request.parent_request
             parent.update_stage(request, current_time)
+            if self._is_query_expired(parent, current_time):
+                parent.aborted = True
+                return
             if parent.current_requests == [] and parent.current_stage < parent.total_stages:
                 next_requests = parent.create_current_stage_requests("meta-llama/Llama-3.1-70B-Instruct", current_time)
                 for next_request in next_requests:
                     if next_request is not None:
                         self.pending_requests.append(next_request)
+
+    def _is_query_expired(self, parent_request: Text2SQLRequest, current_time: float) -> bool:
+        return False
     
     def SLO_pass_rate(self, SLO):
         pass_rate = 0
@@ -200,12 +340,18 @@ class LLMGlobalEngine:
                 results.update({req_id: -1})
             else:
                 results.update({req_id: request.total_time})
+        for req_id, request in self.background_requests.items():
+            if request.generation_finished_at is None:
+                results.update({req_id: -1})
+            else:
+                results.update({req_id: request.generation_finished_at - request.arrive_at})
         with open(output_file, 'w') as f:
             json.dump(results, f, indent=2)
 
     def start(self):
         print(f"Total requests: {self.total_requests}")
         time_queue = set()
+        last_report_time = -1.0
         while True:
             for model in self.supported_models:
                 for engine in self.engines[model]:
@@ -226,10 +372,10 @@ class LLMGlobalEngine:
                 time_queue.remove(self.global_timer)
                 self.check_new_requests(self.global_timer)
 
-            print(
-                f"Finished: {self.finished_percentage:.2f}%, Current Time: {self.global_timer:.2f}",
-                end="\r",
-            )
+            # Progress printing disabled to reduce stdout overhead.
+            if self.global_timer - last_report_time >= 1.0:
+                last_report_time = self.global_timer
+                # print(f"Finished: {self.finished_percentage:.2f}%, Current Time: {self.global_timer:.2f}", end="\r",)
             if not self.has_remaining_requests():
                 break
 
@@ -247,6 +393,10 @@ class LLMGlobalEngine:
             allocatable_requests = [x for x in self.pending_requests if x.arrive_at <= end_at]
             for req in allocatable_requests:
                 # print(f"T: {self.global_timer} Assigning request {req.req_id} @ {req.arrive_at} to engine")
+                if req.parent_request and self._is_query_expired(req.parent_request, end_at):
+                    req.parent_request.aborted = True
+                    self.pending_requests.remove(req)
+                    continue
                 self.policy.assign_requests(req)
                 self.pending_requests.remove(req)
 

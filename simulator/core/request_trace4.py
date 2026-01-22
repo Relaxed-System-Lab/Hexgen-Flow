@@ -126,6 +126,8 @@ class Text2SQLRequest:
     slo: float = 0.0
     hardware_lst: List[str] = None
     tenant_id: int = 0
+    arrive_at: float = 0.0
+    aborted: bool = False
 
     # runtime fields
     current_stage: int = 0
@@ -135,7 +137,15 @@ class Text2SQLRequest:
     stage_lst: List[str] = None
     request_counter: int = 0
 
-    def __init__(self, req_id: str, gen_requests_config: List[dict], slo: float = 0.0, hardware_lst: List[str] = None, tenant_id: int = 0):
+    def __init__(
+        self,
+        req_id: str,
+        gen_requests_config: List[dict],
+        slo: float = 0.0,
+        hardware_lst: List[str] = None,
+        tenant_id: int = 0,
+        arrive_at: float = 0.0,
+    ):
         self.slo = slo
         self.req_id = req_id
         self.current_stage = 0
@@ -145,6 +155,8 @@ class Text2SQLRequest:
         self.current_requests = []
         self.request_counter = 0
         self.tenant_id = tenant_id
+        self.arrive_at = arrive_at
+        self.aborted = False
         self._initialize_stages()
         self.total_stages = len(self.stage_lst)
         # self.standard_workflow = STANDARD_WORKFLOW.copy()
@@ -206,4 +218,3 @@ class Text2SQLRequest:
         if self.current_requests == []:
             self.total_time += (current_time - request.arrive_at)
             self.current_stage += 1
-
